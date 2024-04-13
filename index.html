@@ -144,13 +144,20 @@ p {
 </head>
 <body>
     <div class="container">
-        <h1>Hey, Thanks for the Birthday Wishes!</h1>
+        <h1 id="title">Hey, Thanks for the Birthday Wishes!</h1>
         <p>Just wanted to drop you a quick note to say thanks for the awesome birthday wishes! <span class="highlight">Your message really made my day.</span></p>
         <p>Can't wait to catch up with you at the party. It's gonna be a blast! <span class="highlight">Let's make some memories together.</span></p>
-        <p>Thanks again for making my day extra special. <span class="highlight">You're the best!</span></p>
+        <p>Thanks again for making my day extra special.</p>
+        <p><span class="highlight">Click below to enter the party</span></p>
         <a href="party.html" class="button">Entry to The PARTY !! [Click Here] 🥳🎉</a>
     </div>
-    
+    <script>
+        const title = document.getElementById('title'); 
+        const name = prompt("Enter you Name: ")
+        if(name){
+            title.innerHTML = `Hey ${name}, Thanks for the Birthday Wishes!`;
+        }
+    </script>
     
 </body>
 </html>
