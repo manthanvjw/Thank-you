@@ -126,7 +126,23 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-    
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-image: linear-gradient(to right, #FF6B6B, #FFA500);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #FF6347;
+        }
+        
         @media (max-width: 768px) {
             #selfieContainer {
                 padding: 2rem;
@@ -168,6 +184,8 @@
     <label for="selfieInput">Open Camera</label>
     <input type="file" id="selfieInput" accept="image/*" capture="camera" style="display: none;">
     <button id="downloadButton" style="display: none;">Download</button>
+
+    <a href="party.html" class="button">Return to Party 🎉</a>
 
     <script>
         const canvas = document.getElementById('canvas');
