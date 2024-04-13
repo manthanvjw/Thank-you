@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaving the Party</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+            animation: bgcolor 10s ease infinite;
+        }
+
+        @keyframes bgcolor {
+            0% {
+                background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+            }
+
+            50% {
+                background-image: linear-gradient(to bottom right, #E6E6FA, #FFF5EE);
+            }
+
+            100% {
+                background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+            }
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-image: linear-gradient(to right, #FF6B6B, #FFA500);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #FF6347;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            .button {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Leaving the Party</h1>
+        <p>Well, it seems like it's time to say goodbye!</p>
+        <p>I hope you had a blast at the party. Remember, you're leaving with memories and perhaps a bit of confetti stuck in your hair!</p>
+        <p>Don't worry, though. The party isn't over; it's just taking a quick break until you return for more fun!</p>
+        <a href="index.html" class="button">Return to Home</a>
+    </div>
+</body>
+</html>
