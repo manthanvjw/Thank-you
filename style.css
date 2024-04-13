@@ -1,0 +1,206 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+    animation: bgcolor 10s ease infinite;
+}
+
+@keyframes bgcolor {
+    0% {
+        background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+    }
+    50% {
+        background-image: linear-gradient(to bottom right, #E6E6FA, #FFF5EE);
+    }
+    100% {
+        background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+    }
+}
+
+#foodMenu {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#foodMenu h2 {
+    color: #FF6B6B;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-sections {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.menu-section h3{
+    display: flex;
+    flex-direction: column; /* Change flex-direction to row */
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+
+#foodList {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around; /* Adjust alignment as needed */
+    margin-bottom: 2rem;
+  }
+  
+  #foodList li {
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+#foodList li:hover {
+    transform: scale(1.2);
+    color: #FFA500;
+}
+
+#plate {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#plate div {
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+
+#plate div:hover {
+    transform: scale(1.2);
+    color: #FFA500;
+}
+
+#clearPlateButton,
+#eatButton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#clearPlateButton {
+    background-image: linear-gradient(to right, #e53935, #c62828);
+    color: white;
+    margin-right: 1rem;
+}
+
+#eatButton {
+    background-image: linear-gradient(to right, #4CAF50, #388E3C);
+    color: white;
+    animation: bounce 0.5s infinite;
+}
+
+#clearPlateButton:hover,
+#eatButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    #foodMenu {
+        padding: 2rem;
+    }
+
+    #foodMenu h2 {
+        font-size: 1.8rem;
+    }
+
+    .menu-sections {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-section h3 {
+        font-size: 1.4rem;
+    }
+
+    #clearPlateButton,
+    #eatButton {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #foodMenu {
+        padding: 1.5rem;
+    }
+
+    #foodMenu h2 {
+        font-size: 1.6rem;
+    }
+
+    .menu-section h3 {
+        font-size: 1.2rem;
+    }
+
+    #clearPlateButton,
+    #eatButton {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}

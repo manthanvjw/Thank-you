@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for the Birthday Wishes</title>
+   <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+    animation: bgcolor 10s ease infinite;
+}
+
+@keyframes bgcolor {
+    0% {
+        background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+    }
+    50% {
+        background-image: linear-gradient(to bottom right, #E6E6FA, #FFF5EE);
+    }
+    100% {
+        background-image: linear-gradient(to bottom right, #FFF5EE, #E6E6FA);
+    }
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    transform: translateY(0);
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #FF6B6B;
+    margin-top: 0;
+    font-size: 3.2rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #4B4B4B;
+    animation: fadeIn 1s ease 0.5s both;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #FFA500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    display: inline-block;
+    background-image: linear-gradient(to right, #FF6B6B, #FFA500);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .button {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+    }
+}
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You for the Birthday Wishes!</h1>
+        <p>On this special day, I'm overwhelmed by the outpouring of love and support from all of you. <span class="highlight">Your kind words and well wishes have made my birthday truly remarkable.</span></p>
+        <p>I feel incredibly fortunate to have such wonderful people in my life. <span class="highlight">Your friendship and thoughtfulness mean the world to me.</span> I'm grateful for each and every one of you who took the time to wish me a happy birthday.</p>
+        <p>Thank you for making my day so special. <span class="highlight">I'm truly blessed to have you all in my life.</span></p>
+        <a href="party.html" class="button">Enter the PARTY 🥳🎉</a>
+    </div>
+</body>
+</html>

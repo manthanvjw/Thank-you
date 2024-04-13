@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #foodMenu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #foodMenu h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    #foodList {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      grid-gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    #foodList li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    #foodList li:hover {
+      transform: scale(1.2);
+    }
+
+    #plate {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #plate div {
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    #plate div:hover {
+      transform: scale(1.2);
+    }
+
+    #clearPlateButton {
+      padding: 0.8rem 1.5rem;
+      font-size: 1.2rem;
+      background-color: #e53935;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #clearPlateButton:hover {
+      background-color: #c62828;
+    }
+
+    #eatButton {
+      padding: 0.8rem 1.5rem;
+      font-size: 1.2rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      animation: bounce 0.5s infinite;
+    }
+
+    #eatButton:hover {
+      background-color: #388E3C;
+    }
+
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    .disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+    #foodMenu {
+        width: 90%; /* Adjust the width to fit smaller screens */
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    #foodMenu h2 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+        margin-bottom: 1rem; /* Adjust margin for smaller screens */
+    }
+
+    .menu-sections {
+        flex-direction: column; /* Stack menu sections vertically on smaller screens */
+    }
+
+    .menu-section {
+        width: 100%; /* Ensure each menu section takes full width on smaller screens */
+        margin-bottom: 1rem; /* Add some space between sections on smaller screens */
+    }
+
+    #foodList {
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr)); /* Adjust grid layout for smaller screens */
+        grid-gap: 1rem; /* Adjust grid gap for smaller screens */
+    }
+
+    #foodList li, #plate div {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+
+    #clearPlateButton, #eatButton {
+        padding: 0.6rem 1.2rem; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        width: 100%; /* Ensure buttons take full width on smaller screens */
+        margin-bottom: 1rem; /* Add some space between buttons on smaller screens */
+    }
+}
+
+
+  </style>
+</head>
+<body>
+  <div id="foodMenu">
+    <h2>Food Menu</h2>
+    <div class="menu-sections">
+      <div class="menu-section">
+        <h3>Starters</h3>
+        <ul id="foodList">
+          <li>🍔</li>
+          <li>🌮</li>
+          <li>🥟</li>
+        </ul>
+      </div>
+      <div class="menu-section">
+        <h3>Main Course</h3>
+        <ul id="foodList">
+          <li>🍕</li>
+          <li>🍣</li>
+          <li>🍗</li>
+        </ul>
+      </div>
+      <div class="menu-section">
+        <h3>Dessert</h3>
+        <ul id="foodList">
+          <li>🍦</li>
+          <li>🍰</li>
+          <li>🍮</li>
+        </ul>
+      </div>
+    </div>
+    <div id="plate"></div>
+    <button id="eatButton">Eat</button>
+    <button id="clearPlateButton">Clear Plate</button>
+  </div>
+
+  <audio id="burpAudio" src="burp.mp3"></audio>
+  <audio id="eatingAudio" src="eating.mp3"></audio>
+
+  
+  <!-- <script>
+    const foodList = document.getElementById('foodList');
+    const plate = document.getElementById('plate');
+    const eatButton = document.getElementById('eatButton');
+    const clearPlateButton = document.getElementById('clearPlateButton');
+    const burpAudio = document.getElementById('burpAudio');
+    const eatingAudio = document.getElementById('eatingAudio');
+    
+    let platedFood = [];
+    let isEating = false;
+    let length = 1;
+    foodList.addEventListener('click', (event) => {
+      if (event.target.tagName === 'LI' && !isEating) {
+        const foodItem = event.target.textContent;
+        if (platedFood.length < 10) {
+          platedFood.push(foodItem);
+          updatePlate();
+        } else {
+          alert('Maximum of 10 items allowed on the plate.');
+        }
+      }
+    });
+    
+    plate.addEventListener('click', (event) => {
+      if (event.target.tagName === 'DIV' && !isEating) {
+        const removedItem = event.target.textContent;
+        platedFood = platedFood.filter(item => item !== removedItem);
+        updatePlate();
+      }
+    });
+    
+    eatButton.addEventListener('click', () => {
+      if (platedFood.length > 0) {
+        isEating = true;
+        length = platedFood.length;
+        foodList.classList.add('disabled');
+        clearPlateButton.classList.add('disabled');
+        eatAnimation();
+        eatingAudio.play();
+      } else {
+        alert('The plate is empty. Add some food items first.');
+      }
+    });
+    
+    clearPlateButton.addEventListener('click', () => {
+      if (!isEating) {
+        platedFood = [];
+        updatePlate();
+      }
+    });
+    
+    function updatePlate() {
+      plate.innerHTML = '';
+      platedFood.forEach(item => {
+        const foodDiv = document.createElement('div');
+        foodDiv.textContent = item;
+        plate.appendChild(foodDiv);
+      });
+    }
+    
+    function eatAnimation() {
+      const foodItems = plate.querySelectorAll('div');
+      let index = 0;
+      
+      const interval = setInterval(() => {
+        if (index < foodItems.length) {
+          foodItems[index].style.animation = 'fadeOut 0.5s forwards';
+          index++;
+        } else {
+          clearInterval(interval);
+          platedFood = [];
+          updatePlate();
+          isEating = false;
+          foodList.classList.remove('disabled');
+          clearPlateButton.classList.remove('disabled');
+          burpAudio.play();
+        }
+      }, 2000 / length);
+    }
+    </script> -->
+
+    <script>
+      const foodLists = document.querySelectorAll('#foodList');
+      const plate = document.getElementById('plate');
+      const eatButton = document.getElementById('eatButton');
+      const clearPlateButton = document.getElementById('clearPlateButton');
+      const burpAudio = document.getElementById('burpAudio');
+      const eatingAudio = document.getElementById('eatingAudio');
+      
+      let platedFood = [];
+      let isEating = false;
+      let length = 1;
+      
+      foodLists.forEach(list => {
+          list.addEventListener('click', (event) => {
+              if (event.target.tagName === 'LI' && !isEating) {
+                  const foodItem = event.target.textContent;
+                  if (platedFood.length < 10) {
+                      platedFood.push(foodItem);
+                      updatePlate();
+                  } else {
+                      alert('Maximum of 10 items allowed on the plate.');
+                  }
+              }
+          });
+      });
+      
+      plate.addEventListener('click', (event) => {
+          if (event.target.tagName === 'DIV' && !isEating) {
+              const removedItem = event.target.textContent;
+              platedFood = platedFood.filter(item => item !== removedItem);
+              updatePlate();
+          }
+      });
+      
+      eatButton.addEventListener('click', () => {
+          if (platedFood.length > 0) {
+              isEating = true;
+              length = platedFood.length;
+              foodLists.forEach(list => list.classList.add('disabled'));
+              clearPlateButton.classList.add('disabled');
+              eatAnimation();
+              eatingAudio.play();
+          } else {
+              alert('The plate is empty. Add some food items first.');
+          }
+      });
+      
+      clearPlateButton.addEventListener('click', () => {
+          if (!isEating) {
+              platedFood = [];
+              updatePlate();
+          }
+      });
+      
+      function updatePlate() {
+          plate.innerHTML = '';
+          platedFood.forEach(item => {
+              const foodDiv = document.createElement('div');
+              foodDiv.textContent = item;
+              plate.appendChild(foodDiv);
+          });
+      }
+      
+      function eatAnimation() {
+          const foodItems = plate.querySelectorAll('div');
+          let index = 0;
+          
+          const interval = setInterval(() => {
+              if (index < foodItems.length) {
+                  foodItems[index].style.animation = 'fadeOut 0.5s forwards';
+                  index++;
+              } else {
+                  clearInterval(interval);
+                  platedFood = [];
+                  updatePlate();
+                  isEating = false;
+                  foodLists.forEach(list => list.classList.remove('disabled'));
+                  clearPlateButton.classList.remove('disabled');
+                  burpAudio.play();
+              }
+          }, 2000 / length);
+      }
+  </script>
+  
+</body>
+</html>
